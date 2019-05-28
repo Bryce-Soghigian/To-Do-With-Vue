@@ -1,95 +1,73 @@
 * {
-  // background: #eee;
   box-sizing: border-box;
 }
 body {
-  // background: #000;
-  // color: #eee;
   font-family: monospace;
 }
 .nightmode {
   background: #000;
   color: #eee;
 }
-.neww {
-  // font-family:sans-serif;
-}
-
 .entername {
   position: absolute;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-
-  input {
-    border-radius: 0.3em;
-    border: 1px solid lightsalmon;
-  }
 }
-
+.entername input {
+  border-radius: 0.3em;
+  border: 1px solid lightsalmon;
+}
 #app {
   display: grid;
   grid-template-columns: 1fr 1fr minmax(330px, 540px) 1fr 1fr;
-  input {
-    display: block;
-    padding: 0.6em 0.3em;
-    font-size: 1em;
-    // border-radius: 0.3em;
-    // border: 1px solid lightsalmon;
-  }
+}
+#app input {
+  display: block;
+  padding: 0.6em 0.3em;
+  font-size: 1em;
 }
 #app div ul {
   margin: 0;
   padding: 0;
   list-style: none;
-
-  li {
-    width: 100%;
-    padding: 1em 0;
-    // background: #1c1c1c;
-  }
 }
-
+#app div ul li {
+  width: 100%;
+  padding: 1em 0;
+}
 .isdone {
   text-decoration: line-through;
 }
-
 nav {
-  grid-column: 2/5;
+  grid-column: 0.4;
   margin-bottom: 4em;
   display: flex;
   font-size: 1.2em;
   justify-content: space-between;
   cursor: pointer;
-
-  ul {
-    list-style: none;
-    margin: 0;
-
-    li {
-      display: inline;
-    }
-  }
 }
-
+nav ul {
+  list-style: none;
+  margin: 0;
+}
+nav ul li {
+  display: inline;
+}
 .taskli {
   display: flex;
   justify-content: space-between;
   font-size: 1.4em;
-
-  & :nth-child(2) {
-    width: 70%;
-  }
 }
-
+.taskli :nth-child(2) {
+  width: 70%;
+}
 .todosgrid {
   grid-column: 3;
-
-  & > p {
-    font-size: calc(1em + 10px);
-  }
 }
-
+.todosgrid > p {
+  font-size: calc(1em + 10px);
+}
 .todosgrid > div > h2 {
   padding: 6px 0;
   border-bottom: 1px solid lightsalmon;
@@ -97,27 +75,22 @@ nav {
 .todosgrid > div > p {
   font-size: 2em;
 }
-
 .inputbox {
   border-radius: 0.3em;
   background: white;
   border: 1px solid lightsalmon;
   display: flex;
   justify-content: space-between;
-  input {
-    width: 100%;
-
-    &:focus,
-    &:active,
-    &:focus-within {
-      border: 0;
-    }
-  }
-  input,
-  span {
-    border-radius: 0.3em;
-    border: 0;
-    align-self: center;
-    margin: 0 0.2em;
-  }
+}
+.inputbox input {
+  width: 100%;
+}
+.inputbox input:focus, .inputbox input:active, .inputbox input:focus-within {
+  border: 0;
+}
+.inputbox input, .inputbox span {
+  border-radius: 0.3em;
+  border: 0;
+  align-self: center;
+  margin: 0 0.2em;
 }
