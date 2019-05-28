@@ -1,0 +1,86 @@
+<<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title></title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="styles.css">
+    </head>
+    <body>
+    <div id="app">
+  <nav class="navbar">
+    <span class="icon ion-md-list-box"> Dorfjungs.</span>
+
+    <ul class="navitems">
+      <li>{{user}}</li>
+      <li @click="theme">
+        <span v-if="!nightmode" class="icon ion-md-moon"></span>
+        <span v-else class="icon ion-md-sunny"></span>
+      </li>
+    </ul>
+  </nav>
+
+  <div class="entername" v-if="user==''">
+    <label for="user">Enter your name</label>
+    <input type="text" v-model="userinput" v-on:keyup.enter="setname">
+  </div>
+
+  <div v-else class="todosgrid">
+    <p> Hi {{user}}! What are your ToDos for today? <span area-label="memo">📝</span>
+    </p>
+    <!--     <small>date</small> -->
+    <div class="inputbox">
+      <input type="text" v-model="todoInput" placeholder="e.G. water the plants" v-on:keyup.enter="addTodo">
+      <span @click="addTodo" class="icon ion-md-add-circle-outline"></span>
+    </div>
+
+    <div>
+      <h2>Open Tasks ({{pending.length}})</h2>
+      <p v-if="pending.length==0">Let's chill for now!<span area-label="Beer Mugs">🍻</span><span area-label="sofa">🛋️</span></p>
+      <ul v-if="pending.length>0">
+
+        <li class="taskli" v-for="(todo, index) in pending" v-bind:class="{'isdone' :todo.status}">
+          <span @click="checked(todo)" class="icon ion-ios-radio-button-off"></span>
+          <span>
+          {{todo.title}} 
+        </span>
+          <!--           <span>
+          {{todo.id}}
+        </span> -->
+          <span @click="remove(todo)" class="icon ion-md-trash"></span>
+        </li>
+      </ul>
+    </div>
+
+    <div>
+      <h2>Finished Tasks ({{done.length}})</h2>
+      <p v-if="done.length==0">Let's get something done. <span area-label="winking face">😉</span></p>
+      <ul v-if="done.length>0">
+        <li class="taskli" v-for="item in done" v-bind:class="{'isdone' :item.status}">
+          <span @click="checked(item)" class="icon ion-ios-radio-button-on"></span>
+          <span>
+          {{item.title}} 
+        </span>
+          <!--           <span>
+          {{item.id}}
+        </span> -->
+          <span @click="remove(item)" class="icon ion-md-trash"></span>
+        </li>
+      </ul>
+    </div>
+
+  </div>
+
+</div>
+        <!--[if lt IE 7]>
+            <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="#">upgrade your browser</a> to improve your experience.</p>
+        <![endif]-->
+        
+        <script src="app.js" async defer></script>
+    </body>
+</html>
